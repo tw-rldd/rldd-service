@@ -1,6 +1,6 @@
 package com.thoughtworks.rldd.service.web.assembler
 
-import com.thoughtworks.rldd.service.user.UserResource
+import com.thoughtworks.rldd.service.web.representation.UserResource
 import com.thoughtworks.rldd.service.user.model.User
 import com.thoughtworks.rldd.service.web.controller.UserController
 import org.springframework.hateoas.mvc.ResourceAssemblerSupport

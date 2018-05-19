@@ -1,10 +1,9 @@
 import org.springframework.cloud.contract.verifier.config.TestFramework
-import org.springframework.cloud.contract.verifier.config.TestMode
 
 buildscript {
     ext {
         kotlinVersion = '1.2.41'
-        springBootVersion = '2.0.2.RELEASE'
+        springBootVersion = '2.0.1.RELEASE'
         springContractVersion = '1.2.4.RELEASE'
         dependencyManagementVersion = '0.6.0.RELEASE'
         spockVersion = '1.1-groovy-2.4'
@@ -54,7 +53,7 @@ repositories {
 
 
 ext {
-    springCloudVersion = 'Finchley.BUILD-SNAPSHOT'
+    springCloudVersion = 'Finchley.RC1'
 }
 
 dependencies {
@@ -79,7 +78,7 @@ dependencies {
     testCompile group: 'net.bytebuddy', name: 'byte-buddy', version: '1.7.9'
     // to mock concrete class
     testCompile("org.hamcrest:hamcrest-all:1.3")
-    testCompile ("org.codehaus.groovy:groovy-all:${groovyVersion}")
+    testCompile("org.codehaus.groovy:groovy-all:${groovyVersion}")
     testCompile group: 'com.github.hippoom', name: 'test-data-builder', version: '0.4.1'
 }
 
@@ -98,9 +97,9 @@ dependencyManagement {
 
 contracts {
     basePackageForTests = 'com.thoughtworks.rldd.service.contracts'
-//	packageWithBaseClasses = 'com.thoughtworks.rldd.service.contracts'
+    packageWithBaseClasses = 'com.thoughtworks.rldd.service.contracts.base'
 //    baseClassForTests = 'com.github.yasenia.contracts.HomeBase'
-    baseClassForTests = 'com.thoughtworks.rldd.service.contracts.AbstractMvcTest'
+//    baseClassForTests = 'com.thoughtworks.rldd.service.contracts.AbstractMvcTest'
 //    contractsDslDir = file('contracts')
 
     targetFramework = TestFramework.SPOCK

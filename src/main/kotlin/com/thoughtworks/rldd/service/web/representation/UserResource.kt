@@ -1,4 +1,4 @@
-package com.thoughtworks.rldd.service.user
+package com.thoughtworks.rldd.service.web.representation
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.thoughtworks.rldd.service.user.model.User
