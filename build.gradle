@@ -58,7 +58,7 @@ ext {
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-hateoas')
-//	compile('org.springframework.boot:spring-boot-starter-jdbc')
+	compile('org.springframework.boot:spring-boot-starter-jdbc')
     compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.data:spring-data-commons')
@@ -66,7 +66,7 @@ dependencies {
     compile('org.flywaydb:flyway-core')
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     compile("org.jetbrains.kotlin:kotlin-reflect")
-//	runtime('mysql:mysql-connector-java')
+	runtime('mysql:mysql-connector-java')
     compileOnly('org.projectlombok:lombok')
 
 

@@ -8,8 +8,7 @@ import org.springframework.stereotype.Service
 
 @Slf4j
 @Service
-class UserApplicationService {
-
+class UserApplicationService(private val userRepository: UserRepository) {
 
   val users = listOf("Yusong Deng", "Yuexiang Gao", "Yugang Zhou", "Di Zhang", "Jinghu Peng")
       .mapIndexed { id, name ->
@@ -18,8 +17,7 @@ class UserApplicationService {
 
 
   fun findUsers(page: Pageable): Page<User> {
-    //TODO[yxgao]:
-    return Page.empty()
+    return userRepository.retrieve(page)
   }
 
 }
