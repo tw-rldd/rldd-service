@@ -6,3 +6,4 @@ build/
 *.ipr
 out/
 .gradletasknamecache
+.ideaDataSources

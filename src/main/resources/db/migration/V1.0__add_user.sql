@@ -1,0 +1,6 @@
+CREATE TABLE user
+(
+  id       INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  username VARCHAR(50)     NOT NULL,
+  avatar   VARCHAR(200)
+);
