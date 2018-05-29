@@ -4,9 +4,14 @@ services:
     image: mysql:5.7.20
     volumes:
       - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - rldd
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --lower_case_table_names=1
     ports:
       - "3307:3306"
     environment:
       - TZ=Asia/Shanghai
       - MYSQL_ROOT_PASSWORD=123456
+
+networks:
+  rldd:

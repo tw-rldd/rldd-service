@@ -10,12 +10,6 @@ import org.springframework.stereotype.Service
 @Service
 class UserApplicationService(private val userRepository: UserRepository) {
 
-  val users = listOf("Yusong Deng", "Yuexiang Gao", "Yugang Zhou", "Di Zhang", "Jinghu Peng")
-      .mapIndexed { id, name ->
-        User(id.toString(), name, "")
-      }
-
-
   fun findUsers(page: Pageable): Page<User> {
     return userRepository.retrieve(page)
   }

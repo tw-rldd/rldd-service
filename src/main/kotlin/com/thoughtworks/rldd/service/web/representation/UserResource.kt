@@ -9,12 +9,12 @@ import org.springframework.hateoas.core.Relation
 class UserResource(user: User) : ResourceSupport() {
 
   @JsonProperty("id")
-  var identity: Int = 0
+  var identity: String = ""
   var username: String = ""
   var avatar: String = ""
 
   init {
-    this.identity = user.id.toInt()
+    this.identity = user.id
     this.username = user.name
     this.avatar = user.avatar
   }

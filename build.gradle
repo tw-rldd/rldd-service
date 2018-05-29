@@ -54,20 +54,27 @@ repositories {
 
 ext {
     springCloudVersion = 'Finchley.RC1'
+    flywayVersion = '1.4.197'
 }
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-hateoas')
-	compile('org.springframework.boot:spring-boot-starter-jdbc')
     compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-web')
-    compile('org.springframework.data:spring-data-commons')
     compile('com.fasterxml.jackson.module:jackson-module-kotlin')
-    compile('org.flywaydb:flyway-core')
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     compile("org.jetbrains.kotlin:kotlin-reflect")
-	runtime('mysql:mysql-connector-java')
     compileOnly('org.projectlombok:lombok')
+
+    //jdbc
+    compile('org.springframework.boot:spring-boot-starter-jdbc')
+    compile('org.springframework.data:spring-data-commons')
+    compile('org.flywaydb:flyway-core')
+    compile('mysql:mysql-connector-java')
+    testCompile("com.h2database:h2:${flywayVersion}")
+//    testCompile("org.flywaydb.flyway-test-extensions:flyway-spring-test:${flywayVersion}") {
+//        exclude group: 'org.slf4j' //avoid multiple slf4j impl
+//    }
 
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
