@@ -17,7 +17,7 @@ class UserSearchBase extends AbstractMvcTest {
         userApplicationService.findUsers(_ as Pageable) >>
                 { Pageable page ->
                     def users = ['Yusong Deng', 'Yuexiang Gao', 'Yugang Zhou', 'Di Zhang', 'Jinghu Peng'].withIndex().collect {
-                        new User(User.Identify.Companion.of(it.getSecond().toString()), it.getFirst(), '')
+                        new User(it.getSecond().toString(), it.getFirst(), '')
                     }
                     new PageImpl<User>(users, page, page.getPageSize() + 1)
                 }
