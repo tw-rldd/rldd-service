@@ -5,10 +5,10 @@ import com.thoughtworks.rldd.service.member.model.emptyUser
 import org.springframework.stereotype.Service
 
 @Service
-class MemberApplicationService {
+class MemberApplicationService(val memberRepository: MemberRepository) {
 
   fun retrieveAll(): List<User> {
-    return emptyList()
+    return memberRepository.retrieveAll()
   }
 
   fun reducePoint(userId: String): User {

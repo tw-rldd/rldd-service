@@ -54,7 +54,8 @@ repositories {
 
 ext {
     springCloudVersion = 'Finchley.RC1'
-    flywayVersion = '1.4.197'
+    flywayVersion = '5.0.0'
+    h2Version = '1.4.197'
 }
 
 dependencies {
@@ -65,11 +66,11 @@ dependencies {
     compileOnly('org.projectlombok:lombok')
 
     //jdbc
-//    compile('org.springframework.boot:spring-boot-starter-jdbc')
+    compile('org.springframework.boot:spring-boot-starter-jdbc')
     compile('org.springframework.data:spring-data-commons')
     compile('org.flywaydb:flyway-core')
     compile('mysql:mysql-connector-java')
-    testCompile("com.h2database:h2:${flywayVersion}")
+    testCompile("com.h2database:h2:${h2Version}")
 //    testCompile("org.flywaydb.flyway-test-extensions:flyway-spring-test:${flywayVersion}") {
 //        exclude group: 'org.slf4j' //avoid multiple slf4j impl
 //    }
