@@ -41,4 +41,14 @@ class MemberRepository(val namedParameterJdbcTemplate: NamedParameterJdbcTemplat
         })
   }
 
+  fun findBy(userId: String): User? {
+    return namedParameterJdbcTemplate.queryForObject("SELECT * FROM user WHERE ID = :id;",
+        mapOf("id" to userId),
+        RowMapper { rs, _ ->
+          val username = rs.getString("name")
+          val point  = rs.getInt("point")
+          return@RowMapper User(userId, username, point)
+        })
+  }
+
 }
