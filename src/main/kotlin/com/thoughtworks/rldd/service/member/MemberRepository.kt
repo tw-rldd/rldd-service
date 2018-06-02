@@ -27,8 +27,8 @@ class MemberRepository(val namedParameterJdbcTemplate: NamedParameterJdbcTemplat
   }
 
   private fun exist(user: User): Boolean {
-    return namedParameterJdbcTemplate.queryForObject("SELECT count(*) FROM user WHERE USERNAME = :name;",
-        mapOf("name" to user.name), Int::class.java) == 1
+    return namedParameterJdbcTemplate.queryForObject("SELECT count(*) FROM user WHERE ID = :id;",
+        mapOf("id" to user.id), Int::class.java)!! > 0
   }
 
   fun retrieveAll(): List<User> {
