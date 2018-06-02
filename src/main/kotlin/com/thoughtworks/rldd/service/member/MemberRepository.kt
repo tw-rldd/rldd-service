@@ -10,7 +10,7 @@ class MemberRepository(val namedParameterJdbcTemplate: NamedParameterJdbcTemplat
 
   fun save(user: User) {
     if (exist(user)) {
-      namedParameterJdbcTemplate.update("UPDATE user SET username = :name, point = :point WHERE id = :point;",
+      namedParameterJdbcTemplate.update("UPDATE user SET username = :name, point = :point WHERE id = :id;",
           mapOf(
               "id" to user.id,
               "name" to user.name,
