@@ -45,7 +45,7 @@ class MemberRepository(val namedParameterJdbcTemplate: NamedParameterJdbcTemplat
     return namedParameterJdbcTemplate.queryForObject("SELECT * FROM user WHERE ID = :id;",
         mapOf("id" to userId),
         RowMapper { rs, _ ->
-          val username = rs.getString("name")
+          val username = rs.getString("username")
           val point  = rs.getInt("point")
           return@RowMapper User(userId, username, point)
         })
