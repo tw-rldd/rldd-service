@@ -1,5 +1,6 @@
 package com.thoughtworks.rldd.service.member
 
+import com.thoughtworks.rldd.service.member.command.AddUserCommand
 import com.thoughtworks.rldd.service.member.model.User
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -7,6 +8,10 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Transactional
 class MemberApplicationService(val memberRepository: MemberRepository) {
+
+  fun addUser(command: AddUserCommand) : User {
+    return User("004", "jinhu.peng", 3)
+  }
 
   fun retrieveAll(): List<User> {
     return memberRepository.retrieveAll()

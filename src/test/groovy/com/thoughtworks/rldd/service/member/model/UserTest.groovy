@@ -18,6 +18,7 @@ class UserTest extends Specification {
         new User('id', 'name', 3) | 3
     }
 
+    @Unroll
     def "it should reduce point"(User user, int expectPoint) {
         expect:
         user.reducePoint()
@@ -27,7 +28,8 @@ class UserTest extends Specification {
         user                      | expectPoint
         new User('id', 'name', 3) | 2
         new User('id', 'name', 2) | 1
-        new User('id', 'name', 1) | 3
+        new User('id', 'name', 1) | 0
+        new User('id', 'name', 0) | 0
     }
 
 }
