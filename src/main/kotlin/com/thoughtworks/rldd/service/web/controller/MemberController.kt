@@ -3,6 +3,7 @@ package com.thoughtworks.rldd.service.web.controller
 import com.thoughtworks.rldd.service.member.MemberApplicationService
 import com.thoughtworks.rldd.service.member.command.AddUserCommand
 import com.thoughtworks.rldd.service.member.model.User
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -32,6 +33,11 @@ class MemberController(private val memberApplicationService: MemberApplicationSe
   @PostMapping("{userId}/restorePoint")
   fun restorePoint(@PathVariable("userId") userId: String): User {
     return memberApplicationService.restorePoint(userId)
+  }
+
+  @DeleteMapping("{userId}")
+  fun removeMember(@PathVariable userId: String): User {
+    return memberApplicationService.removeBy(userId)
   }
 
 }

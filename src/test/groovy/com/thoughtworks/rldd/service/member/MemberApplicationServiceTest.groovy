@@ -1,12 +1,15 @@
 package com.thoughtworks.rldd.service.member
 
+import com.thoughtworks.rldd.service.member.command.AddUserCommand
 import com.thoughtworks.rldd.service.member.model.User
+import com.thoughtworks.rldd.service.member.service.UserCreator
 import spock.lang.Specification
 
 class MemberApplicationServiceTest extends Specification {
 
     def memberRepository = Mock(MemberRepository)
-    def subject = new MemberApplicationService(memberRepository)
+    def userCreator = Mock(UserCreator)
+    def subject = new MemberApplicationService(memberRepository, userCreator)
 
     def "it should retrieve all members"() {
         given:
@@ -18,5 +21,18 @@ class MemberApplicationServiceTest extends Specification {
 
         then:
         assert members == expectMembers
+    }
+
+    def "it should add member"() {
+        given:
+        def username = "username"
+        def command = new AddUserCommand(username)
+        userCreator.createNewUser(_ as String) >> new User('id', username)
+
+        when:
+        def user = subject.addUser(command)
+
+        then:
+        assert user.name == username
     }
 }
