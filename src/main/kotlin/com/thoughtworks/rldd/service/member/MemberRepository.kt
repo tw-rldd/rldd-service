@@ -51,4 +51,8 @@ class MemberRepository(val namedParameterJdbcTemplate: NamedParameterJdbcTemplat
         })
   }
 
+  fun removeBy(userId: String) {
+    namedParameterJdbcTemplate.update("DELETE FROM user WHERE ID = :id", mapOf("id" to userId))
+  }
+
 }

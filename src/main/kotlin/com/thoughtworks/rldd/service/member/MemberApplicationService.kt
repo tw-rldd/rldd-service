@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional
 class MemberApplicationService(val memberRepository: MemberRepository,
                                val userCreator: UserCreator) {
 
-  fun addUser(command: AddUserCommand) : User {
+  fun addUser(command: AddUserCommand): User {
     val newUser = userCreator.createNewUser(command.name)
     memberRepository.save(newUser)
     return newUser
@@ -36,7 +36,9 @@ class MemberApplicationService(val memberRepository: MemberRepository,
   }
 
   fun removeBy(userId: String): User {
-    return User("id", "name")
+    val user = memberRepository.findBy(userId) ?: throw RuntimeException("cannot find user by $userId")
+    memberRepository.removeBy(userId)
+    return user
   }
 
 }
