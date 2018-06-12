@@ -1,6 +1,7 @@
 package com.thoughtworks.rldd.service.member
 
 import com.thoughtworks.rldd.service.member.model.User
+import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.jdbc.core.RowMapper
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 import org.springframework.stereotype.Repository
@@ -42,13 +43,17 @@ class MemberRepository(val namedParameterJdbcTemplate: NamedParameterJdbcTemplat
   }
 
   fun findBy(userId: String): User? {
-    return namedParameterJdbcTemplate.queryForObject("SELECT * FROM user WHERE ID = :id;",
-        mapOf("id" to userId),
-        RowMapper { rs, _ ->
-          val username = rs.getString("username")
-          val point  = rs.getInt("point")
-          return@RowMapper User(userId, username, point)
-        })
+    try {
+      return namedParameterJdbcTemplate.queryForObject("SELECT * FROM user WHERE ID = :id;",
+          mapOf("id" to userId),
+          RowMapper { rs, _ ->
+            val username = rs.getString("username")
+            val point = rs.getInt("point")
+            return@RowMapper User(userId, username, point)
+          })
+    } catch (error: EmptyResultDataAccessException) {
+      return null
+    }
   }
 
   fun removeBy(userId: String) {
