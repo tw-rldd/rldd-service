@@ -1,7 +1,7 @@
 package com.thoughtworks.rldd.service.member
 
 import com.thoughtworks.rldd.service.AbstractRepositoryTest
-import com.thoughtworks.rldd.service.member.model.User
+import com.thoughtworks.rldd.service.member.model.Member
 import org.junit.Test
 import org.springframework.beans.factory.annotation.Autowired
 
@@ -15,9 +15,9 @@ class MemberRepositoryTest extends AbstractRepositoryTest {
         def before = subject.retrieveAll()
 
         [
-                new User('001', 'yusong.deng', 3),
-                new User('002', 'yugang.zhou', 2),
-                new User('003', 'yuexiang.gao', 3),
+                new Member('001', 'yusong.deng', 3),
+                new Member('002', 'yugang.zhou', 2),
+                new Member('003', 'yuexiang.gao', 3),
         ].each { subject.save(it) }
 
         def after = subject.retrieveAll()
@@ -27,7 +27,7 @@ class MemberRepositoryTest extends AbstractRepositoryTest {
 
     @Test
     void "it should remove member by id"() {
-        def member = new User(UUID.randomUUID().toString(), 'for remove')
+        def member = new Member(UUID.randomUUID().toString(), 'for remove')
         subject.save(member)
         def existUser = subject.findBy(member.id)
 

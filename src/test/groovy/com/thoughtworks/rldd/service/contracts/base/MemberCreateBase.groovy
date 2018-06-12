@@ -3,7 +3,7 @@ package com.thoughtworks.rldd.service.contracts.base
 import com.thoughtworks.rldd.service.contracts.AbstractMvcTest
 import com.thoughtworks.rldd.service.member.MemberApplicationService
 import com.thoughtworks.rldd.service.member.command.AddUserCommand
-import com.thoughtworks.rldd.service.member.model.User
+import com.thoughtworks.rldd.service.member.model.Member
 import org.springframework.beans.factory.annotation.Autowired
 
 class MemberCreateBase extends AbstractMvcTest{
@@ -12,6 +12,6 @@ class MemberCreateBase extends AbstractMvcTest{
     MemberApplicationService memberApplicationService
 
     def setup() {
-        memberApplicationService.addUser(new AddUserCommand('jinhu.peng')) >> new User('004', 'jinhu.peng', 3)
+        memberApplicationService.addUser(new AddUserCommand('jinhu.peng')) >> new Member('004', 'jinhu.peng', 3)
     }
 }
